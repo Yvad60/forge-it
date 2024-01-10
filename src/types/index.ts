@@ -25,20 +25,30 @@ interface Author {
   accountType: string;
 }
 
-interface Content {
-  type: string;
-  text: string;
-}
-
-interface ContentParagraph {
-  type: string;
-  content: Content[];
+export interface Content {
+  type?:
+    | "text"
+    | "mediaSingle"
+    | "media"
+    | "file"
+    | "paragraph"
+    | "doc"
+    | "codeBlock"
+    | "emoji"
+    | "mention"
+    | "textColor"
+    | "bulletList"
+    | "listItem";
+  content?: Content[];
+  text?: string;
+  attrs?: object;
+  marks?: object;
 }
 
 interface CommentBody {
   version: number;
   type: string;
-  content: ContentParagraph[];
+  content: Content[];
 }
 
 export interface Comment {

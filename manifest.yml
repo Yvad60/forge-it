@@ -10,5 +10,9 @@ modules:
 permissions:
   scopes:
     - 'read:jira-work'
+  external:
+    fetch:
+      backend:
+        - 'api.openai.com'
 app:
   id: ari:cloud:ecosystem::app/6507282e-fd9e-4f5b-84b0-772c45bce6fa
