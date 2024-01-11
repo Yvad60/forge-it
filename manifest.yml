@@ -1,0 +1,13 @@
+modules:
+  confluence:contentAction:
+    - key: keyword-extractor-hello-world
+      function: main
+      title: keyword-extractor
+  function:
+    - key: main
+      handler: index.run
+permissions:
+  scopes:
+    - 'read:page:confluence'
+app:
+  id: ari:cloud:ecosystem::app/88a5982c-e4ae-4721-bca2-302d14fea97b
