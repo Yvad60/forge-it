@@ -1,0 +1,15 @@
+modules:
+  trigger:
+    - key: comment-issue-app-hello-world
+      function: main
+      events:
+        - avi:jira:created:issue
+  function:
+    - key: main
+      handler: index.run
+permissions:
+  scopes:
+    - "read:jira-work"
+    - "write:jira-work"
+app:
+  id: ari:cloud:ecosystem::app/a1a31ee6-c3c4-46a1-9f12-0bcc38f97ad7
