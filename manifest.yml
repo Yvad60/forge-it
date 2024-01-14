@@ -8,6 +8,11 @@ modules:
       handler: index.run
 permissions:
   scopes:
-    - 'read:page:confluence'
+    - "read:page:confluence"
+    - "write:confluence-content"
+  external:
+    fetch:
+      backend:
+        - "https://api.openai.com"
 app:
   id: ari:cloud:ecosystem::app/88a5982c-e4ae-4721-bca2-302d14fea97b

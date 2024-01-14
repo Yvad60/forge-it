@@ -43,3 +43,9 @@ export interface Page {
   body: PageBody;
   _links: Links;
 }
+
+export interface PageUpdate {
+  id: string;
+  key: string;
+  version: PageVersion;
+}
