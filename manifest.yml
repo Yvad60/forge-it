@@ -1,0 +1,11 @@
+modules:
+  jira:workflowValidator:
+    - key: issue-is-assigned-validator
+      name: Issue is assigned validator
+      description: Validates that the issue is assigned to anyone before it is transitioned
+      function: validator_function
+  function:
+    - key: validator_function
+      handler: index.run
+app:
+  id: ari:cloud:ecosystem::app/d6fb64fb-af77-42a6-835d-0f45675d9ff3
