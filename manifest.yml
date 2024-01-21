@@ -1,0 +1,12 @@
+modules:
+  jira:issueContext:
+    - key: issue-counter-tracker
+      title: Issue counter tracker
+      label: Track issue working time
+      icon: https://res.cloudinary.com/dhaae8uz9/image/upload/v1705432541/icons8-clock_4_dtx0qm.svg
+      resource: custom-frontend
+resources:
+  - key: custom-frontend
+    path: static/issue-counter-tracker/dist
+app:
+  id: ari:cloud:ecosystem::app/9868893f-39bb-4e36-a0cb-172325cec63e
