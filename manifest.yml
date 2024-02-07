@@ -1,8 +1,10 @@
 modules:
-  jira:adminPage:
-    - key: 'admin-page-issue-example'
+  jira:dashboardGadget:
+    - key: dashboard-gadgets-test-app
+      title: Dashboard gadget test app
+      description: Test app input field
       function: triggle-function
-      title: Admin page test app
+      thumbnail: https://picsum.photos/200
   function:
     - key: triggle-function
       handler: index.run
