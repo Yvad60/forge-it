@@ -1,0 +1,10 @@
+modules:
+  jira:adminPage:
+    - key: 'admin-page-issue-example'
+      function: triggle-function
+      title: Admin page test app
+  function:
+    - key: triggle-function
+      handler: index.run
+app:
+  id: ari:cloud:ecosystem::app/d2af2587-9e2b-4066-aa11-b8da913192d6
