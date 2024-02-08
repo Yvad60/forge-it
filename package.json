@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@forge/ui": "^1.10.5"
+  }
+}
