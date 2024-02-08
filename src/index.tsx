@@ -1,16 +1,12 @@
-import ForgeUI, { DashboardGadget, Text, render, useProductContext } from "@forge/ui";
-ForgeUI;
+import ForgeUI, { render, IssueGlance, Text } from "@forge/ui";
+ForgeUI
 
 const App = () => {
-  const {
-    extensionContext: { gadgetConfiguration },
-  } = useProductContext();
-
-  return (
-    <DashboardGadget>
-      <Text>{`Hello ${gadgetConfiguration.name || "world"}`}</Text>
-    </DashboardGadget>
-  );
+  return <Text>Hello from the Issue glance!</Text>;
 };
 
-export const run = render(<App />);
+export const run = render(
+  <IssueGlance>
+    <App />
+  </IssueGlance>
+);

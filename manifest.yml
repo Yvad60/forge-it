@@ -1,10 +1,9 @@
 modules:
-  jira:dashboardGadget:
-    - key: dashboard-gadgets-test-app
-      title: Dashboard gadget test app
-      description: Test app input field
+  jira:issueGlance:
+    - key: issue-glance-test-app
+      title: Issue glance app
       function: triggle-function
-      thumbnail: https://picsum.photos/200
+      label: Issue glance app label
   function:
     - key: triggle-function
       handler: index.run
