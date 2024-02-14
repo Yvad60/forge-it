@@ -1,22 +1,35 @@
-import Button from "@atlaskit/button";
-import { view } from "@forge/bridge";
-import React, { useEffect } from "react";
-React;
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
-const App = () => {
-  useEffect(() => {
-    const loadJiraUITheme = async () => {
-      await view.theme.enable();
-    };
-    loadJiraUITheme();
-    document.getElementsByTagName("body")[0].style.backgroundColor = "transparent";
-  }, []);
+function App() {
+  const [count, setCount] = useState(0)
 
   return (
-    <div>
-      <span>Hello there how are you now how are you</span>
-      <Button>Default button</Button>
-    </div>
-  );
-};
-export default App;
+    <>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more now because
+      </p>
+    </>
+  )
+}
+
+export default App

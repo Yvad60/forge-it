@@ -1,10 +1,10 @@
-import "@atlaskit/css-reset";
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-React;
 
-console.log("I ran");
-
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);

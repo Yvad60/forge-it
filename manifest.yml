@@ -4,13 +4,19 @@ modules:
       title: User reference by group
       icon: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
       resource: trigger-resources
-      tunnel:
-        port: 3000
+
   function:
     - key: trigger-function
       handler: index.run
-resources: 
+resources:
   - key: trigger-resources
     path: static/dist
+    tunnel:
+      port: 3000
+
+permissions:
+  content:
+    styles:
+      - "unsafe-inline"
 app:
   id: ari:cloud:ecosystem::app/597aae01-e322-4c97-a926-f18cd7124f3a
