@@ -4,6 +4,8 @@ modules:
       title: User reference by group
       icon: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
       resource: trigger-resources
+      tunnel:
+        port: 3000
   function:
     - key: trigger-function
       handler: index.run
