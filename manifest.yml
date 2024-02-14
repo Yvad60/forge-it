@@ -3,9 +3,12 @@ modules:
     - key: user-by-reference-group
       title: User reference by group
       icon: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
-      function: trigger-function
+      resource: trigger-resources
   function:
     - key: trigger-function
       handler: index.run
+resources: 
+  - key: trigger-resources
+    path: static/dist
 app:
   id: ari:cloud:ecosystem::app/597aae01-e322-4c97-a926-f18cd7124f3a
