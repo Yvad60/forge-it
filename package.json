@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@forge/api": "^3.1.0",
+    "@forge/ui": "^1.10.5"
+  }
+}

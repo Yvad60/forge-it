@@ -1,0 +1,22 @@
+modules:
+  jira:issuePanel:
+    - key: create-user-test
+      function: trigger-function
+      title: create user test
+      icon: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
+
+  function:
+    - key: trigger-function
+      handler: index.run
+permissions:
+  scopes:
+    - manage:jira-configuration
+    - read:app-user-token
+    - read:jira-user
+
+remotes:
+  - key: forge-netlify-function
+    baseUrl: https://user-group-reference.netlify.app
+
+app:
+  id: ari:cloud:ecosystem::app/adc41dac-dbae-4942-9309-110a0afd6635
