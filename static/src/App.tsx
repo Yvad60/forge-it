@@ -1,35 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import Button from "@atlaskit/button";
+import Form, { Label } from "@atlaskit/form";
+import Select from "@atlaskit/select";
+import { view } from "@forge/bridge";
+import React, { useEffect, useState } from "react";
+React;
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  useEffect(() => {
+    const loadJiraUITheme = async () => {
+      await view.theme.enable();
+    };
+    loadJiraUITheme();
+    document.getElementsByTagName("body")[0].style.backgroundColor = "transparent";
+  }, []);
+
+  const [inputValue, setInputValue] = useState<string>();
+  const [selectMinHeight, setSelectMinHeight] = useState<"auto" | "130px">("auto");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [formValue, setFormValue] = useState<any>();
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more now because
-      </p>
-    </>
-  )
-}
+    <Form onSubmit={(value) => setFormValue(value)}>
+      {() => (
+        <div>
+          <div style={{ minHeight: selectMinHeight, marginTop: "10px", marginBottom: "12px" }}>
+            <Label htmlFor="new-users-emails">Emails of new users</Label>
+            <Select
+              onInputChange={(value) => setInputValue(value)}
+              onChange={(formValue) => {
+                setFormValue(formValue);
+                setInputValue(undefined);
+              }}
+              onMenuClose={() => setSelectMinHeight("auto")}
+              onMenuOpen={() => setSelectMinHeight("130px")}
+              inputId="new-users-emails"
+              isMulti
+              noOptionsMessage={() => "Enter email to select"}
+              options={inputValue ? [{ label: inputValue, value: inputValue }] : []}
+              placeholder="Enter one or more email"
+            />
+          </div>
+          <Button onClick={() => setIsSubmitted(true)}>Submit</Button>
 
-export default App
+          {isSubmitted && (
+            <p>
+              {formValue && formValue.length > 0
+                ? `Entered: ${formValue.map((val: { value: any }) => val.value).join(" ")}`
+                : "No email provided"}
+            </p>
+          )}
+        </div>
+      )}
+    </Form>
+  );
+};
+export default App;

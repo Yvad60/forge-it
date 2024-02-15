@@ -10,6 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@atlaskit/button": "^17.3.2",
+    "@atlaskit/css-reset": "^6.6.2",
+    "@atlaskit/form": "^9.0.7",
+    "@atlaskit/select": "^17.1.0",
+    "@atlaskit/tokens": "^1.37.1",
+    "@forge/bridge": "^3.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
