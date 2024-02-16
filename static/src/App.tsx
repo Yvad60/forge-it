@@ -2,7 +2,7 @@
 import Button from "@atlaskit/button";
 import Form, { Label } from "@atlaskit/form";
 import Select from "@atlaskit/select";
-import { view } from "@forge/bridge";
+import { invokeRemote, view } from "@forge/bridge";
 import React, { useEffect, useState } from "react";
 React;
 
@@ -20,6 +20,19 @@ const App = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [formValue, setFormValue] = useState<any>();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [data, setData] = useState<any>(null);
+
+  const handleClick = async () => {
+    try {
+      const response = await invokeRemote({
+        method: "GET",
+        path: "/api/forge",
+      });
+      setData(JSON.stringify(response));
+    } catch (error: any) {
+      setData(error);
+    }
+  };
 
   return (
     <Form onSubmit={(value) => setFormValue(value)}>
@@ -42,7 +55,9 @@ const App = () => {
               placeholder="Enter one or more email"
             />
           </div>
+          <div>{data}</div>
           <Button onClick={() => setIsSubmitted(true)}>Submit</Button>
+          <Button onClick={handleClick}>Submited</Button>
 
           {isSubmitted && (
             <p>

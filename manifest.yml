@@ -4,10 +4,17 @@ modules:
       title: User reference by group
       icon: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
       resource: trigger-resources
+      resolver:
+        endpoint: create-user-api-endpoint
 
   function:
     - key: trigger-function
       handler: index.run
+
+  endpoint:
+    - key: create-user-api-endpoint
+      remote: create-user-api-func
+
 resources:
   - key: trigger-resources
     path: static/dist
@@ -17,6 +24,12 @@ resources:
 permissions:
   content:
     styles:
-      - "unsafe-inline"
+      - unsafe-inline
+  scopes: []
+
+remotes:
+  - key: create-user-api-func
+    baseUrl: https://user-group-reference.netlify.app
+
 app:
   id: ari:cloud:ecosystem::app/597aae01-e322-4c97-a926-f18cd7124f3a
