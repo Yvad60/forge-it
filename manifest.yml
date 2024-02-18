@@ -5,15 +5,11 @@ modules:
       icon: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
       resource: trigger-resources
       resolver:
-        endpoint: create-user-api-endpoint
+        function: app-resolver
 
   function:
-    - key: trigger-function
-      handler: index.run
-
-  endpoint:
-    - key: create-user-api-endpoint
-      remote: create-user-api-func
+    - key: app-resolver
+      handler: index.handler
 
 resources:
   - key: trigger-resources
@@ -25,11 +21,10 @@ permissions:
   content:
     styles:
       - unsafe-inline
-  scopes: []
-
-remotes:
-  - key: create-user-api-func
-    baseUrl: https://user-group-reference.netlify.app
+  scopes:
+    - read:app-user-token
+    - read:app-system-token
+    - read:jira-user
 
 app:
   id: ari:cloud:ecosystem::app/597aae01-e322-4c97-a926-f18cd7124f3a

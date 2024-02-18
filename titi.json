@@ -1,0 +1,19 @@
+{
+  "self": "https://api.atlassian.com/ex/jira/9b62f61f-4b36-4c69-bd67-78b8476ef902/rest/api/2/user?accountId=712020:00e99333-a797-4721-a1c8-42314da717fd",
+  "accountId": "712020:00e99333-a797-4721-a1c8-42314da717fd",
+  "accountType": "atlassian",
+  "emailAddress": "ivad.habimana@ojemba.com",
+  "avatarUrls": {
+    "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:00e99333-a797-4721-a1c8-42314da717fd/651b4e7a-6d90-4a16-ad48-ab69d1d9a4ad/48",
+    "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:00e99333-a797-4721-a1c8-42314da717fd/651b4e7a-6d90-4a16-ad48-ab69d1d9a4ad/24",
+    "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:00e99333-a797-4721-a1c8-42314da717fd/651b4e7a-6d90-4a16-ad48-ab69d1d9a4ad/16",
+    "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:00e99333-a797-4721-a1c8-42314da717fd/651b4e7a-6d90-4a16-ad48-ab69d1d9a4ad/32"
+  },
+  "displayName": "Ivad Yves Habimana",
+  "active": true,
+  "timeZone": "Europe/Berlin",
+  "locale": "en_US",
+  "groups": { "size": 3, "items": [] },
+  "applicationRoles": { "size": 3, "items": [] },
+  "expand": "groups,applicationRoles"
+}
