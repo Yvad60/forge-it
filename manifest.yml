@@ -25,6 +25,20 @@ permissions:
     - read:app-user-token
     - read:app-system-token
     - read:jira-user
+    - storage:app
 
 app:
   id: ari:cloud:ecosystem::app/597aae01-e322-4c97-a926-f18cd7124f3a
+  storage:
+    entities:
+      - name: user
+        attributes:
+          emailAddress:
+            type: string
+          accountId:
+            type: string
+          apiKey:
+            type: string
+        indexes:
+          - accountId
+          - emailAddress

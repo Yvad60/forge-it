@@ -10,7 +10,6 @@ export const getCurrentUser = async (): Promise<CurrentUser> => {
     });
     return await response.json();
   } catch (error) {
-    console.log("error occured");
     console.error(error);
   }
 };

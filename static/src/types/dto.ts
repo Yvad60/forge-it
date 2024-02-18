@@ -1,3 +1,5 @@
+import { Status, UserAuthData } from "./common";
+
 export type CurrentUserDTO = {
   self: string;
   accountId: string;
@@ -13,6 +15,11 @@ export type CurrentUserDTO = {
   expand: string;
 };
 
+export type UserAuthDataDTO = {
+  key: string;
+  value: UserAuthData;
+};
+
 type AvatarUrls = {
   "48x48": string;
   "24x24": string;
@@ -23,4 +30,9 @@ type AvatarUrls = {
 type GroupsAndRoles = {
   size: number;
   items: string[];
+};
+
+export type SaveApiKeyResponse = {
+  status: Status;
+  error?: string;
 };

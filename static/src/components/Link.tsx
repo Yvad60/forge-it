@@ -10,7 +10,11 @@ const Link: FC<PropsWithChildren<Props>> = ({ children, href }) => {
     router.navigate(href);
   };
 
-  return <a onClick={handleNavigate}>{children}</a>;
+  return (
+    <a className="cursor-pointer" onClick={handleNavigate}>
+      {children}
+    </a>
+  );
 };
 
 export default Link;
