@@ -1,5 +1,5 @@
 import Resolver from "@forge/resolver";
-import { getCurrentUser } from "./helpers/api";
+import { createNewJiraUser, getCurrentUser } from "./helpers/api";
 import { getUserByEmailAddress, saveUserToStorage } from "./helpers/storage";
 import { Status } from "./types/common";
 import { CreateUserDTO } from "./types/dto";
@@ -27,6 +27,11 @@ resolver.define("get-current-user", async () => {
 
 resolver.define("get-user-auth-data", async ({ payload }) => {
   const userAuthData = await getUserByEmailAddress(payload.emailAddress as string);
+  return userAuthData;
+});
+
+resolver.define("create-new-user", async ({ payload }) => {
+  const userAuthData = await createNewJiraUser(payload.newUserEmail, payload.adminAuthData);
   return userAuthData;
 });
 

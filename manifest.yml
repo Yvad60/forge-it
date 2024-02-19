@@ -21,6 +21,12 @@ permissions:
   content:
     styles:
       - unsafe-inline
+  external:
+    styles:
+      - https://connect-cdn.atl-paas.net/surfaces.css
+    fetch:
+      backend:
+        - "*.atlassian.net"
   scopes:
     - read:app-user-token
     - read:app-system-token
@@ -38,6 +44,8 @@ app:
           accountId:
             type: string
           apiKey:
+            type: string
+          siteurl:
             type: string
         indexes:
           - accountId

@@ -1,11 +1,11 @@
 import { LoadingButton } from "@atlaskit/button";
 import Form, { ErrorMessage, Field, FormHeader, FormSection, Label } from "@atlaskit/form";
 import TextField from "@atlaskit/textfield";
-import { invoke } from "@forge/bridge";
+import { invoke, view } from "@forge/bridge";
 import { FC } from "react";
 import { Status } from "../types/common";
-import { SaveApiKeyResponse } from "../types/dto";
 import { ApiKeyFormInputs } from "../types/form";
+import { SaveApiKeyResponse } from "../types/frontend-dto";
 import Link from "./Link";
 
 type Props = {
@@ -18,11 +18,15 @@ type Props = {
 const ApiKeyForm: FC<Props> = ({ currentUserData }) => {
   const handleSubmit = async (userApiKey: string) => {
     if (currentUserData == null) return;
+    const context = await view.getContext();
+
     const result: SaveApiKeyResponse = await invoke("save-api-key", {
       emailAddress: currentUserData.emailAddress,
       accountId: currentUserData.accountId,
       apiKey: userApiKey,
+      siteurl: context.siteUrl,
     });
+
     if (result.status === Status.Success) {
       console.log("success");
     } else {

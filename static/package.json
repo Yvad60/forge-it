@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@atlaskit/avatar": "^21.4.6",
     "@atlaskit/button": "^17.3.2",
     "@atlaskit/css-reset": "^6.6.2",
     "@atlaskit/form": "^9.0.7",

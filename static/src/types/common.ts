@@ -7,4 +7,5 @@ export type UserAuthData = {
   emailAddress: string;
   accountId: string;
   apiKey: string;
+  siteurl: string
 };

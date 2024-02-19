@@ -2,21 +2,22 @@ import Spinner from "@atlaskit/spinner";
 import { invoke, view } from "@forge/bridge";
 import { useEffect, useState } from "react";
 import ApiKeyForm from "./components/ApiKeyForm";
+import NewUserForm from "./components/NewUserForm";
 import { UserAuthData } from "./types/common";
-import { CurrentUserDTO, UserAuthDataDTO } from "./types/dto";
+import { UserAuthDataDTO, UserDTO } from "./types/frontend-dto";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [currentUser, setCurrentUser] = useState<CurrentUserDTO>();
+  const [currentUser, setCurrentUser] = useState<UserDTO>();
   const [userAuthData, setUserAuthData] = useState<UserAuthData>();
 
   useEffect(() => {
     const loadAppContext = async () => {
-      const currentUser: CurrentUserDTO = await invoke("get-current-user");
+      await view.theme.enable();
+      const currentUser: UserDTO = await invoke("get-current-user");
       const userAuthDataResponse: UserAuthDataDTO = await invoke("get-user-auth-data", {
         emailAddress: currentUser.emailAddress,
       });
-      await view.theme.enable();
 
       setCurrentUser(currentUser);
       setUserAuthData(userAuthDataResponse.value);
@@ -35,11 +36,11 @@ const App = () => {
       <ApiKeyForm
         currentUserData={{
           emailAddress: currentUser.emailAddress,
-          accountId: currentUser.emailAddress,
+          accountId: currentUser.accountId,
         }}
       />
     );
 
-  return <span> You are known welcome</span>;
+  return <NewUserForm userAuthData={userAuthData} />;
 };
 export default App;

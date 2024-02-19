@@ -13,6 +13,13 @@ export type CurrentUser = {
   expand: string;
 };
 
+export type UserAuthData = {
+  emailAddress: string;
+  accountId: string;
+  apiKey: string;
+  siteurl: string;
+};
+
 type AvatarUrls = {
   "48x48": string;
   "24x24": string;

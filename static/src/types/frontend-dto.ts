@@ -1,6 +1,6 @@
 import { Status, UserAuthData } from "./common";
 
-export type CurrentUserDTO = {
+export type UserDTO = {
   self: string;
   accountId: string;
   accountType: string;
