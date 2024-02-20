@@ -20,6 +20,12 @@ export type UserAuthDataDTO = {
   value: UserAuthData;
 };
 
+export type UserGroupDTO = {
+  name: string;
+  groupId: string;
+  self: string;
+};
+
 type AvatarUrls = {
   "48x48": string;
   "24x24": string;

@@ -1,5 +1,5 @@
 import Resolver from "@forge/resolver";
-import { createNewJiraUser, getCurrentUser } from "./helpers/api";
+import { createNewJiraUser, getCurrentUser, getIssueAssignee, getUserGroups } from "./helpers/api";
 import { getUserByEmailAddress, saveUserToStorage } from "./helpers/storage";
 import { Status } from "./types/common";
 import { CreateUserDTO } from "./types/dto";
@@ -31,8 +31,21 @@ resolver.define("get-user-auth-data", async ({ payload }) => {
 });
 
 resolver.define("create-new-user", async ({ payload }) => {
-  const userAuthData = await createNewJiraUser(payload.newUserEmail, payload.adminAuthData);
-  return userAuthData;
+  const userEmails = payload.userEmails as string[];
+  const response = [];
+  for (const email of userEmails) {
+    const userAuthData = await createNewJiraUser(email, payload.adminAuthData);
+    response.push(userAuthData);
+  }
+
+  return response;
+});
+
+resolver.define("get-reference-user-groups", async ({ payload }) => {
+  console.log(payload);
+  const issueAssigne = await getIssueAssignee(payload.issueKey);
+  const userGroups = await getUserGroups(issueAssigne.fields.assignee.accountId);
+  return userGroups;
 });
 
 export const handler = resolver.getDefinitions();

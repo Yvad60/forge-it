@@ -1,4 +1,4 @@
-export type CurrentUser = {
+export type User = {
   self: string;
   accountId: string;
   accountType: string;
@@ -12,6 +12,8 @@ export type CurrentUser = {
   applicationRoles: GroupsAndRoles;
   expand: string;
 };
+
+export type IssueAssigne = Omit<User, "groups" | "applicationRoles" | "active">;
 
 export type UserAuthData = {
   emailAddress: string;

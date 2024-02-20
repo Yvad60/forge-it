@@ -64,7 +64,7 @@ const ApiKeyForm: FC<Props> = ({ currentUserData }) => {
                 {({ fieldProps, error }) => (
                   <div className="-mt-1">
                     <Label htmlFor={fieldProps.id}>API key</Label>
-                    <TextField autoComplete="off" {...fieldProps} />
+                    <TextField type="password" autoComplete="off" {...fieldProps} />
                     {error && <ErrorMessage>{error}</ErrorMessage>}
                   </div>
                 )}

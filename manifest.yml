@@ -24,6 +24,8 @@ permissions:
   external:
     styles:
       - https://connect-cdn.atl-paas.net/surfaces.css
+    images:
+      - "*.gravatar.com"
     fetch:
       backend:
         - "*.atlassian.net"
@@ -32,6 +34,7 @@ permissions:
     - read:app-system-token
     - read:jira-user
     - storage:app
+    - read:jira-work
 
 app:
   id: ari:cloud:ecosystem::app/597aae01-e322-4c97-a926-f18cd7124f3a
