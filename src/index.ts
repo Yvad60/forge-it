@@ -34,7 +34,7 @@ resolver.define("create-new-user", async ({ payload }) => {
   const userEmails = payload.userEmails as string[];
   const response = [];
   for (const email of userEmails) {
-    const userAuthData = await createNewJiraUser(email, payload.adminAuthData);
+    const userAuthData = await createNewJiraUser(email, payload.adminAuthData,payload.accountId);
     response.push(userAuthData);
   }
 

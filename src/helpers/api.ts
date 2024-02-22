@@ -17,7 +17,8 @@ export const getCurrentUser = async (): Promise<User> => {
 
 export const createNewJiraUser = async (
   newUserEmail: string,
-  adminAuthData: UserAuthData
+  adminAuthData: UserAuthData,
+  accountId:string,
 ): Promise<User> => {
   try {
     const response = await fetch(`${adminAuthData.siteurl}/rest/api/2/user`, {
@@ -33,14 +34,20 @@ export const createNewJiraUser = async (
         emailAddress: newUserEmail,
       }),
     });
-    const data = (await response.json()) as User;
-    return data;
+    const newUser = (await response.json()) as User;
+    const userGroups=await getUserGroups(accountId)
+    for (const group of userGroups) {
+      await addUserToGroup(newUser.accountId, group.groupId);
+    }
+    return newUser;
   } catch (error) {
     console.error(error);
   }
 };
 
-export const getIssueAssignee = async (issueKey: string): Promise<IssueAssigneeDTO> => {
+export const getIssueAssignee = async (
+  issueKey: string
+): Promise<IssueAssigneeDTO> => {
   try {
     const response = await api
       .asUser()
@@ -56,7 +63,9 @@ export const getIssueAssignee = async (issueKey: string): Promise<IssueAssigneeD
   }
 };
 
-export const getUserGroups = async (accountId: string): Promise<UserGroupDTO[]> => {
+export const getUserGroups = async (
+  accountId: string
+): Promise<UserGroupDTO[]> => {
   try {
     const response = await api
       .asUser()
@@ -70,4 +79,23 @@ export const getUserGroups = async (accountId: string): Promise<UserGroupDTO[]> 
   } catch (error) {
     console.error(error);
   }
+};
+
+
+//https://developer.atlassian.com/cloud/jira/platform/rest/v2/api-group-groups/#api-rest-api-2-group-user-post
+
+export const addUserToGroup = async (accountId: string, groupId: string) => {
+  const response = await api
+    .asUser()
+    .requestJira(route`/rest/api/2/group/user?groupId=${groupId}`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ accountId }),
+    });
+
+  console.log(`Response: ${response.status} ${response.statusText}`);
+  console.log(await response.json());
 };
